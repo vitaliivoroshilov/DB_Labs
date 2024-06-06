@@ -1,0 +1,435 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 16.3
+-- Dumped by pg_dump version 16.3
+
+-- Started on 2024-06-06 21:26:51
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 216 (class 1259 OID 16986)
+-- Name: courses; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.courses (
+    idc bigint NOT NULL,
+    cname character varying(45) NOT NULL,
+    creduts numeric(4,0) NOT NULL
+);
+
+
+ALTER TABLE public.courses OWNER TO postgres;
+
+--
+-- TOC entry 215 (class 1259 OID 16985)
+-- Name: courses_idc_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.courses_idc_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.courses_idc_seq OWNER TO postgres;
+
+--
+-- TOC entry 4835 (class 0 OID 0)
+-- Dependencies: 215
+-- Name: courses_idc_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.courses_idc_seq OWNED BY public.courses.idc;
+
+
+--
+-- TOC entry 218 (class 1259 OID 17006)
+-- Name: lectors; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.lectors (
+    idl bigint NOT NULL,
+    fn character varying(45) NOT NULL,
+    ln character varying(45) NOT NULL,
+    iddep bigint NOT NULL,
+    salary numeric(12,2) NOT NULL
+);
+
+
+ALTER TABLE public.lectors OWNER TO postgres;
+
+--
+-- TOC entry 220 (class 1259 OID 17039)
+-- Name: marks; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.marks (
+    idm bigint NOT NULL,
+    idst bigint NOT NULL,
+    idcr bigint NOT NULL,
+    dex date NOT NULL,
+    exmr bigint NOT NULL,
+    mark bigint NOT NULL
+);
+
+
+ALTER TABLE public.marks OWNER TO postgres;
+
+--
+-- TOC entry 219 (class 1259 OID 17038)
+-- Name: marks_idm_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.marks_idm_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.marks_idm_seq OWNER TO postgres;
+
+--
+-- TOC entry 4836 (class 0 OID 0)
+-- Dependencies: 219
+-- Name: marks_idm_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.marks_idm_seq OWNED BY public.marks.idm;
+
+
+--
+-- TOC entry 217 (class 1259 OID 17001)
+-- Name: students; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.students (
+    ids bigint NOT NULL,
+    fn character varying(45) NOT NULL,
+    ln character varying(45) NOT NULL,
+    dob date NOT NULL,
+    mentor bigint NOT NULL
+);
+
+
+ALTER TABLE public.students OWNER TO postgres;
+
+--
+-- TOC entry 221 (class 1259 OID 17060)
+-- Name: student_with_mentor; Type: VIEW; Schema: public; Owner: postgres
+--
+
+CREATE VIEW public.student_with_mentor AS
+ SELECT students.ids,
+    students.fn,
+    students.ln,
+    students.dob,
+    students.mentor,
+    lectors.fn AS lfn,
+    lectors.ln AS lln
+   FROM (public.students
+     LEFT JOIN public.lectors ON ((students.mentor = lectors.idl)));
+
+
+ALTER VIEW public.student_with_mentor OWNER TO postgres;
+
+--
+-- TOC entry 222 (class 1259 OID 17064)
+-- Name: students_avg_mark; Type: VIEW; Schema: public; Owner: postgres
+--
+
+CREATE VIEW public.students_avg_mark AS
+SELECT
+    NULL::bigint AS ids,
+    NULL::character varying(45) AS fn,
+    NULL::character varying(45) AS ln,
+    NULL::date AS dob,
+    NULL::bigint AS mentor,
+    NULL::numeric AS avg;
+
+
+ALTER VIEW public.students_avg_mark OWNER TO postgres;
+
+--
+-- TOC entry 223 (class 1259 OID 17069)
+-- Name: students_avg_mark_by_courses; Type: VIEW; Schema: public; Owner: postgres
+--
+
+CREATE VIEW public.students_avg_mark_by_courses AS
+SELECT
+    NULL::bigint AS ids,
+    NULL::character varying(45) AS fn,
+    NULL::character varying(45) AS ln,
+    NULL::date AS dob,
+    NULL::bigint AS mentor,
+    NULL::bigint AS idc,
+    NULL::character varying(45) AS cname,
+    NULL::numeric(4,0) AS creduts,
+    NULL::numeric AS avg;
+
+
+ALTER VIEW public.students_avg_mark_by_courses OWNER TO postgres;
+
+--
+-- TOC entry 224 (class 1259 OID 17074)
+-- Name: students_count_of_marks; Type: VIEW; Schema: public; Owner: postgres
+--
+
+CREATE VIEW public.students_count_of_marks AS
+SELECT
+    NULL::bigint AS ids,
+    NULL::character varying(45) AS fn,
+    NULL::character varying(45) AS ln,
+    NULL::date AS dob,
+    NULL::bigint AS mentor,
+    NULL::bigint AS count;
+
+
+ALTER VIEW public.students_count_of_marks OWNER TO postgres;
+
+--
+-- TOC entry 4663 (class 2604 OID 16989)
+-- Name: courses idc; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.courses ALTER COLUMN idc SET DEFAULT nextval('public.courses_idc_seq'::regclass);
+
+
+--
+-- TOC entry 4664 (class 2604 OID 17042)
+-- Name: marks idm; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.marks ALTER COLUMN idm SET DEFAULT nextval('public.marks_idm_seq'::regclass);
+
+
+--
+-- TOC entry 4825 (class 0 OID 16986)
+-- Dependencies: 216
+-- Data for Name: courses; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.courses (idc, cname, creduts) FROM stdin;
+11	Software Engineering	2
+12	Philosophy	1
+13	C++ Programming	3
+14	Algorithms & Structures	3
+15	Discrete Math	2
+\.
+
+
+--
+-- TOC entry 4827 (class 0 OID 17006)
+-- Dependencies: 218
+-- Data for Name: lectors; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.lectors (idl, fn, ln, iddep, salary) FROM stdin;
+1001	Albert	Einstein	1	1000.00
+1002	Nikolas	Lobachevskiy	1	800.00
+1003	Igor	Kurchatov	1	900.00
+1004	Lev	Tolstoy	2	500.00
+1005	Quentin	Tarantino	2	600.00
+\.
+
+
+--
+-- TOC entry 4829 (class 0 OID 17039)
+-- Dependencies: 220
+-- Data for Name: marks; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.marks (idm, idst, idcr, dex, exmr, mark) FROM stdin;
+1	16001	11	2017-01-15	1003	2
+2	16002	11	2017-01-15	1003	4
+3	16001	12	2017-01-20	1005	4
+4	16002	12	2017-01-20	1005	5
+5	16003	11	2017-01-15	1002	0
+\.
+
+
+--
+-- TOC entry 4826 (class 0 OID 17001)
+-- Dependencies: 217
+-- Data for Name: students; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.students (ids, fn, ln, dob, mentor) FROM stdin;
+16001	Tim	Roth	1961-05-14	1001
+16002	Amanda	Plummer	1957-03-27	1001
+16003	Laura	Lovelace	1962-03-07	1004
+16004	John	Travolta	1954-02-18	1004
+16005	Samuel	Jackson	1948-12-21	1005
+\.
+
+
+--
+-- TOC entry 4837 (class 0 OID 0)
+-- Dependencies: 215
+-- Name: courses_idc_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.courses_idc_seq', 5, true);
+
+
+--
+-- TOC entry 4838 (class 0 OID 0)
+-- Dependencies: 219
+-- Name: marks_idm_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.marks_idm_seq', 5, true);
+
+
+--
+-- TOC entry 4666 (class 2606 OID 16991)
+-- Name: courses courses_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.courses
+    ADD CONSTRAINT courses_pkey PRIMARY KEY (idc);
+
+
+--
+-- TOC entry 4670 (class 2606 OID 17012)
+-- Name: lectors lectors_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.lectors
+    ADD CONSTRAINT lectors_pkey PRIMARY KEY (idl);
+
+
+--
+-- TOC entry 4672 (class 2606 OID 17044)
+-- Name: marks marks_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.marks
+    ADD CONSTRAINT marks_pkey PRIMARY KEY (idm);
+
+
+--
+-- TOC entry 4668 (class 2606 OID 17005)
+-- Name: students studs_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.students
+    ADD CONSTRAINT studs_pkey PRIMARY KEY (ids);
+
+
+--
+-- TOC entry 4821 (class 2618 OID 17067)
+-- Name: students_avg_mark _RETURN; Type: RULE; Schema: public; Owner: postgres
+--
+
+CREATE OR REPLACE VIEW public.students_avg_mark AS
+ SELECT students.ids,
+    students.fn,
+    students.ln,
+    students.dob,
+    students.mentor,
+    avg(marks.mark) AS avg
+   FROM (public.students
+     LEFT JOIN public.marks ON (((students.ids = marks.idst) AND (marks.mark > 2))))
+  GROUP BY students.ids;
+
+
+--
+-- TOC entry 4822 (class 2618 OID 17072)
+-- Name: students_avg_mark_by_courses _RETURN; Type: RULE; Schema: public; Owner: postgres
+--
+
+CREATE OR REPLACE VIEW public.students_avg_mark_by_courses AS
+ SELECT students.ids,
+    students.fn,
+    students.ln,
+    students.dob,
+    students.mentor,
+    courses.idc,
+    courses.cname,
+    courses.creduts,
+    avg(marks.mark) AS avg
+   FROM ((public.students
+     LEFT JOIN public.marks ON ((students.ids = marks.idst)))
+     LEFT JOIN public.courses ON ((courses.idc = marks.idcr)))
+  GROUP BY students.ids, courses.idc;
+
+
+--
+-- TOC entry 4823 (class 2618 OID 17077)
+-- Name: students_count_of_marks _RETURN; Type: RULE; Schema: public; Owner: postgres
+--
+
+CREATE OR REPLACE VIEW public.students_count_of_marks AS
+ SELECT students.ids,
+    students.fn,
+    students.ln,
+    students.dob,
+    students.mentor,
+    count(marks.*) AS count
+   FROM (public.students
+     LEFT JOIN public.marks ON ((students.ids = marks.idst)))
+  GROUP BY students.ids;
+
+
+--
+-- TOC entry 4674 (class 2606 OID 17055)
+-- Name: marks marks_exmr_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.marks
+    ADD CONSTRAINT marks_exmr_fkey FOREIGN KEY (exmr) REFERENCES public.lectors(idl) NOT VALID;
+
+
+--
+-- TOC entry 4675 (class 2606 OID 17050)
+-- Name: marks marks_idcr_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.marks
+    ADD CONSTRAINT marks_idcr_fkey FOREIGN KEY (idcr) REFERENCES public.courses(idc) NOT VALID;
+
+
+--
+-- TOC entry 4676 (class 2606 OID 17045)
+-- Name: marks marks_idst_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.marks
+    ADD CONSTRAINT marks_idst_fkey FOREIGN KEY (idst) REFERENCES public.students(ids);
+
+
+--
+-- TOC entry 4673 (class 2606 OID 17033)
+-- Name: students studs_mentor_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.students
+    ADD CONSTRAINT studs_mentor_fkey FOREIGN KEY (mentor) REFERENCES public.lectors(idl) NOT VALID;
+
+
+-- Completed on 2024-06-06 21:26:51
+
+--
+-- PostgreSQL database dump complete
+--
+
