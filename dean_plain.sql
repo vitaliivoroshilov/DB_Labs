@@ -5,7 +5,7 @@
 -- Dumped from database version 16.3
 -- Dumped by pg_dump version 16.3
 
--- Started on 2024-06-06 21:26:51
+-- Started on 2024-06-10 11:15:21
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -228,13 +228,11 @@ ALTER TABLE ONLY public.marks ALTER COLUMN idm SET DEFAULT nextval('public.marks
 -- Data for Name: courses; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.courses (idc, cname, creduts) FROM stdin;
-11	Software Engineering	2
-12	Philosophy	1
-13	C++ Programming	3
-14	Algorithms & Structures	3
-15	Discrete Math	2
-\.
+INSERT INTO public.courses VALUES (11, 'Software Engineering', 2);
+INSERT INTO public.courses VALUES (12, 'Philosophy', 1);
+INSERT INTO public.courses VALUES (13, 'C++ Programming', 3);
+INSERT INTO public.courses VALUES (14, 'Algorithms & Structures', 3);
+INSERT INTO public.courses VALUES (15, 'Discrete Math', 2);
 
 
 --
@@ -243,13 +241,11 @@ COPY public.courses (idc, cname, creduts) FROM stdin;
 -- Data for Name: lectors; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.lectors (idl, fn, ln, iddep, salary) FROM stdin;
-1001	Albert	Einstein	1	1000.00
-1002	Nikolas	Lobachevskiy	1	800.00
-1003	Igor	Kurchatov	1	900.00
-1004	Lev	Tolstoy	2	500.00
-1005	Quentin	Tarantino	2	600.00
-\.
+INSERT INTO public.lectors VALUES (1001, 'Albert', 'Einstein', 1, 1000.00);
+INSERT INTO public.lectors VALUES (1002, 'Nikolas', 'Lobachevskiy', 1, 800.00);
+INSERT INTO public.lectors VALUES (1003, 'Igor', 'Kurchatov', 1, 900.00);
+INSERT INTO public.lectors VALUES (1004, 'Lev', 'Tolstoy', 2, 500.00);
+INSERT INTO public.lectors VALUES (1005, 'Quentin', 'Tarantino', 2, 600.00);
 
 
 --
@@ -258,13 +254,11 @@ COPY public.lectors (idl, fn, ln, iddep, salary) FROM stdin;
 -- Data for Name: marks; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.marks (idm, idst, idcr, dex, exmr, mark) FROM stdin;
-1	16001	11	2017-01-15	1003	2
-2	16002	11	2017-01-15	1003	4
-3	16001	12	2017-01-20	1005	4
-4	16002	12	2017-01-20	1005	5
-5	16003	11	2017-01-15	1002	0
-\.
+INSERT INTO public.marks VALUES (1, 16001, 11, '2017-01-15', 1003, 2);
+INSERT INTO public.marks VALUES (2, 16002, 11, '2017-01-15', 1003, 4);
+INSERT INTO public.marks VALUES (3, 16001, 12, '2017-01-20', 1005, 4);
+INSERT INTO public.marks VALUES (4, 16002, 12, '2017-01-20', 1005, 5);
+INSERT INTO public.marks VALUES (5, 16003, 11, '2017-01-15', 1002, 0);
 
 
 --
@@ -273,13 +267,11 @@ COPY public.marks (idm, idst, idcr, dex, exmr, mark) FROM stdin;
 -- Data for Name: students; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.students (ids, fn, ln, dob, mentor) FROM stdin;
-16001	Tim	Roth	1961-05-14	1001
-16002	Amanda	Plummer	1957-03-27	1001
-16003	Laura	Lovelace	1962-03-07	1004
-16004	John	Travolta	1954-02-18	1004
-16005	Samuel	Jackson	1948-12-21	1005
-\.
+INSERT INTO public.students VALUES (16001, 'Tim', 'Roth', '1961-05-14', 1001);
+INSERT INTO public.students VALUES (16002, 'Amanda', 'Plummer', '1957-03-27', 1001);
+INSERT INTO public.students VALUES (16003, 'Laura', 'Lovelace', '1962-03-07', 1004);
+INSERT INTO public.students VALUES (16004, 'John', 'Travolta', '1954-02-18', 1004);
+INSERT INTO public.students VALUES (16005, 'Samuel', 'Jackson', '1948-12-21', 1005);
 
 
 --
@@ -427,7 +419,7 @@ ALTER TABLE ONLY public.students
     ADD CONSTRAINT studs_mentor_fkey FOREIGN KEY (mentor) REFERENCES public.lectors(idl) NOT VALID;
 
 
--- Completed on 2024-06-06 21:26:51
+-- Completed on 2024-06-10 11:15:21
 
 --
 -- PostgreSQL database dump complete
