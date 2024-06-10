@@ -5,7 +5,7 @@
 -- Dumped from database version 16.3
 -- Dumped by pg_dump version 16.3
 
--- Started on 2024-06-05 14:18:16
+-- Started on 2024-06-10 11:14:06
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -758,18 +758,16 @@ ALTER TABLE ONLY public.shippings_of_products ALTER COLUMN idsop SET DEFAULT nex
 -- Data for Name: customers; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.customers (idc, name, address, phone, contact) FROM stdin;
-1	Crooks, Weber and Turner	0869 Lyons Place	+86 (104) 145-8483	Kerwinn Sicily
-2	Herzog, Larson and Harvey	11219 Armistice Junction	+86 (223) 708-3599	Lucien Stirrup
-3	Rodriguez, Heaney and Jones	145 Sundown Parkway	+45 (423) 770-2320	Gaylene Quinnelly
-4	Reilly, Leuschke and Jacobson	84730 Shopko Park	+66 (300) 227-9202	Almire Cotgrove
-5	Lubowitz and Sons	79 International Parkway	+62 (184) 823-9682	Hirsch Strickett
-6	Bergnaum, Pacocha and Mayert	76 North Center	+82 (128) 882-9803	Ardyth Abela
-7	Daugherty, McClure and Walsh	3 Orin Lane	+54 (549) 136-2831	Livvy Killock
-8	Bode-Medhurst	7902 Gateway Street	+81 (619) 367-4752	Othello Lemerle
-9	Dare and Sons	23 Kennedy Trail	+81 (208) 599-7933	Lynne Vernau
-10	Crist LLC	9298 Artisan Drive	+86 (525) 857-3012	Beatrix Culcheth
-\.
+INSERT INTO public.customers VALUES (1, 'Crooks, Weber and Turner', '0869 Lyons Place', '+86 (104) 145-8483', 'Kerwinn Sicily');
+INSERT INTO public.customers VALUES (2, 'Herzog, Larson and Harvey', '11219 Armistice Junction', '+86 (223) 708-3599', 'Lucien Stirrup');
+INSERT INTO public.customers VALUES (3, 'Rodriguez, Heaney and Jones', '145 Sundown Parkway', '+45 (423) 770-2320', 'Gaylene Quinnelly');
+INSERT INTO public.customers VALUES (4, 'Reilly, Leuschke and Jacobson', '84730 Shopko Park', '+66 (300) 227-9202', 'Almire Cotgrove');
+INSERT INTO public.customers VALUES (5, 'Lubowitz and Sons', '79 International Parkway', '+62 (184) 823-9682', 'Hirsch Strickett');
+INSERT INTO public.customers VALUES (6, 'Bergnaum, Pacocha and Mayert', '76 North Center', '+82 (128) 882-9803', 'Ardyth Abela');
+INSERT INTO public.customers VALUES (7, 'Daugherty, McClure and Walsh', '3 Orin Lane', '+54 (549) 136-2831', 'Livvy Killock');
+INSERT INTO public.customers VALUES (8, 'Bode-Medhurst', '7902 Gateway Street', '+81 (619) 367-4752', 'Othello Lemerle');
+INSERT INTO public.customers VALUES (9, 'Dare and Sons', '23 Kennedy Trail', '+81 (208) 599-7933', 'Lynne Vernau');
+INSERT INTO public.customers VALUES (10, 'Crist LLC', '9298 Artisan Drive', '+86 (525) 857-3012', 'Beatrix Culcheth');
 
 
 --
@@ -778,48 +776,46 @@ COPY public.customers (idc, name, address, phone, contact) FROM stdin;
 -- Data for Name: customers_optional_attributes; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.customers_optional_attributes (idcoa, id_customer, attr_name, relevance, value) FROM stdin;
-2	1	subdirector	f	\N
-3	1	country	f	\N
-4	1	city	f	\N
-5	2	director	f	\N
-6	2	subdirector	f	\N
-7	2	country	f	\N
-8	2	city	f	\N
-9	3	director	f	\N
-10	3	subdirector	f	\N
-11	3	country	f	\N
-12	3	city	f	\N
-13	4	director	f	\N
-14	4	subdirector	f	\N
-15	4	country	f	\N
-16	4	city	f	\N
-17	5	director	f	\N
-18	5	subdirector	f	\N
-19	5	country	f	\N
-20	5	city	f	\N
-21	6	director	f	\N
-22	6	subdirector	f	\N
-23	6	country	f	\N
-24	6	city	f	\N
-25	7	director	f	\N
-26	7	subdirector	f	\N
-27	7	country	f	\N
-28	7	city	f	\N
-29	8	director	f	\N
-30	8	subdirector	f	\N
-31	8	country	f	\N
-32	8	city	f	\N
-33	9	director	f	\N
-34	9	subdirector	f	\N
-35	9	country	f	\N
-36	9	city	f	\N
-37	10	director	f	\N
-38	10	subdirector	f	\N
-39	10	country	f	\N
-40	10	city	f	\N
-1	1	director	f	\N
-\.
+INSERT INTO public.customers_optional_attributes VALUES (2, 1, 'subdirector', false, NULL);
+INSERT INTO public.customers_optional_attributes VALUES (3, 1, 'country', false, NULL);
+INSERT INTO public.customers_optional_attributes VALUES (4, 1, 'city', false, NULL);
+INSERT INTO public.customers_optional_attributes VALUES (5, 2, 'director', false, NULL);
+INSERT INTO public.customers_optional_attributes VALUES (6, 2, 'subdirector', false, NULL);
+INSERT INTO public.customers_optional_attributes VALUES (7, 2, 'country', false, NULL);
+INSERT INTO public.customers_optional_attributes VALUES (8, 2, 'city', false, NULL);
+INSERT INTO public.customers_optional_attributes VALUES (9, 3, 'director', false, NULL);
+INSERT INTO public.customers_optional_attributes VALUES (10, 3, 'subdirector', false, NULL);
+INSERT INTO public.customers_optional_attributes VALUES (11, 3, 'country', false, NULL);
+INSERT INTO public.customers_optional_attributes VALUES (12, 3, 'city', false, NULL);
+INSERT INTO public.customers_optional_attributes VALUES (13, 4, 'director', false, NULL);
+INSERT INTO public.customers_optional_attributes VALUES (14, 4, 'subdirector', false, NULL);
+INSERT INTO public.customers_optional_attributes VALUES (15, 4, 'country', false, NULL);
+INSERT INTO public.customers_optional_attributes VALUES (16, 4, 'city', false, NULL);
+INSERT INTO public.customers_optional_attributes VALUES (17, 5, 'director', false, NULL);
+INSERT INTO public.customers_optional_attributes VALUES (18, 5, 'subdirector', false, NULL);
+INSERT INTO public.customers_optional_attributes VALUES (19, 5, 'country', false, NULL);
+INSERT INTO public.customers_optional_attributes VALUES (20, 5, 'city', false, NULL);
+INSERT INTO public.customers_optional_attributes VALUES (21, 6, 'director', false, NULL);
+INSERT INTO public.customers_optional_attributes VALUES (22, 6, 'subdirector', false, NULL);
+INSERT INTO public.customers_optional_attributes VALUES (23, 6, 'country', false, NULL);
+INSERT INTO public.customers_optional_attributes VALUES (24, 6, 'city', false, NULL);
+INSERT INTO public.customers_optional_attributes VALUES (25, 7, 'director', false, NULL);
+INSERT INTO public.customers_optional_attributes VALUES (26, 7, 'subdirector', false, NULL);
+INSERT INTO public.customers_optional_attributes VALUES (27, 7, 'country', false, NULL);
+INSERT INTO public.customers_optional_attributes VALUES (28, 7, 'city', false, NULL);
+INSERT INTO public.customers_optional_attributes VALUES (29, 8, 'director', false, NULL);
+INSERT INTO public.customers_optional_attributes VALUES (30, 8, 'subdirector', false, NULL);
+INSERT INTO public.customers_optional_attributes VALUES (31, 8, 'country', false, NULL);
+INSERT INTO public.customers_optional_attributes VALUES (32, 8, 'city', false, NULL);
+INSERT INTO public.customers_optional_attributes VALUES (33, 9, 'director', false, NULL);
+INSERT INTO public.customers_optional_attributes VALUES (34, 9, 'subdirector', false, NULL);
+INSERT INTO public.customers_optional_attributes VALUES (35, 9, 'country', false, NULL);
+INSERT INTO public.customers_optional_attributes VALUES (36, 9, 'city', false, NULL);
+INSERT INTO public.customers_optional_attributes VALUES (37, 10, 'director', false, NULL);
+INSERT INTO public.customers_optional_attributes VALUES (38, 10, 'subdirector', false, NULL);
+INSERT INTO public.customers_optional_attributes VALUES (39, 10, 'country', false, NULL);
+INSERT INTO public.customers_optional_attributes VALUES (40, 10, 'city', false, NULL);
+INSERT INTO public.customers_optional_attributes VALUES (1, 1, 'director', false, NULL);
 
 
 --
@@ -828,58 +824,56 @@ COPY public.customers_optional_attributes (idcoa, id_customer, attr_name, releva
 -- Data for Name: orders; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.orders (ido, id_customer, id_product, id_shipping, quantity, date) FROM stdin;
-1	7	2	2	73	2024-04-27
-2	3	15	1	15	2024-04-26
-3	2	9	1	16	2024-03-02
-4	3	19	3	14	2024-04-28
-5	8	22	2	44	2024-02-28
-6	8	15	1	77	2024-05-01
-7	7	12	1	95	2024-04-19
-8	9	20	1	73	2024-01-25
-9	5	11	3	93	2024-02-02
-10	1	2	2	29	2024-02-01
-11	2	24	2	12	2024-03-14
-12	7	10	3	24	2024-04-12
-13	5	11	2	27	2024-04-11
-14	3	16	3	60	2024-05-29
-15	10	25	3	30	2024-01-09
-16	5	8	1	36	2024-01-22
-17	10	16	3	28	2024-04-12
-18	7	10	2	87	2024-03-06
-19	7	8	1	29	2024-03-09
-20	7	3	3	84	2024-01-19
-21	6	25	3	17	2024-05-01
-22	2	23	2	68	2024-05-05
-23	2	17	1	99	2024-03-08
-25	8	21	2	1	2024-01-02
-26	7	14	1	30	2024-01-23
-27	6	6	3	24	2024-03-22
-28	6	19	3	100	2024-02-01
-29	9	11	3	82	2024-03-19
-30	2	16	3	15	2024-02-09
-31	3	18	2	89	2024-05-01
-32	5	2	2	99	2024-01-10
-33	6	13	2	77	2024-05-10
-34	5	19	3	86	2024-03-28
-35	1	17	1	70	2024-05-13
-36	9	11	3	36	2024-01-23
-37	3	6	2	72	2024-05-07
-38	7	3	3	19	2024-03-06
-39	10	23	1	27	2024-01-04
-40	3	9	1	17	2024-01-17
-41	7	15	1	66	2024-01-01
-42	2	22	3	1	2024-04-24
-43	5	3	2	30	2024-02-22
-44	5	23	1	95	2024-03-14
-45	7	25	3	17	2024-04-30
-46	8	13	2	57	2024-03-09
-47	1	5	1	26	2024-02-04
-48	5	12	1	6	2024-03-11
-50	10	11	3	91	2024-02-09
-24	1	25	3	89	2024-02-09
-49	10	12	1	95	2024-03-22
-\.
+INSERT INTO public.orders VALUES (1, 7, 2, 2, 73, '2024-04-27');
+INSERT INTO public.orders VALUES (2, 3, 15, 1, 15, '2024-04-26');
+INSERT INTO public.orders VALUES (3, 2, 9, 1, 16, '2024-03-02');
+INSERT INTO public.orders VALUES (4, 3, 19, 3, 14, '2024-04-28');
+INSERT INTO public.orders VALUES (5, 8, 22, 2, 44, '2024-02-28');
+INSERT INTO public.orders VALUES (6, 8, 15, 1, 77, '2024-05-01');
+INSERT INTO public.orders VALUES (7, 7, 12, 1, 95, '2024-04-19');
+INSERT INTO public.orders VALUES (8, 9, 20, 1, 73, '2024-01-25');
+INSERT INTO public.orders VALUES (9, 5, 11, 3, 93, '2024-02-02');
+INSERT INTO public.orders VALUES (10, 1, 2, 2, 29, '2024-02-01');
+INSERT INTO public.orders VALUES (11, 2, 24, 2, 12, '2024-03-14');
+INSERT INTO public.orders VALUES (12, 7, 10, 3, 24, '2024-04-12');
+INSERT INTO public.orders VALUES (13, 5, 11, 2, 27, '2024-04-11');
+INSERT INTO public.orders VALUES (14, 3, 16, 3, 60, '2024-05-29');
+INSERT INTO public.orders VALUES (15, 10, 25, 3, 30, '2024-01-09');
+INSERT INTO public.orders VALUES (16, 5, 8, 1, 36, '2024-01-22');
+INSERT INTO public.orders VALUES (17, 10, 16, 3, 28, '2024-04-12');
+INSERT INTO public.orders VALUES (18, 7, 10, 2, 87, '2024-03-06');
+INSERT INTO public.orders VALUES (19, 7, 8, 1, 29, '2024-03-09');
+INSERT INTO public.orders VALUES (20, 7, 3, 3, 84, '2024-01-19');
+INSERT INTO public.orders VALUES (21, 6, 25, 3, 17, '2024-05-01');
+INSERT INTO public.orders VALUES (22, 2, 23, 2, 68, '2024-05-05');
+INSERT INTO public.orders VALUES (23, 2, 17, 1, 99, '2024-03-08');
+INSERT INTO public.orders VALUES (25, 8, 21, 2, 1, '2024-01-02');
+INSERT INTO public.orders VALUES (26, 7, 14, 1, 30, '2024-01-23');
+INSERT INTO public.orders VALUES (27, 6, 6, 3, 24, '2024-03-22');
+INSERT INTO public.orders VALUES (28, 6, 19, 3, 100, '2024-02-01');
+INSERT INTO public.orders VALUES (29, 9, 11, 3, 82, '2024-03-19');
+INSERT INTO public.orders VALUES (30, 2, 16, 3, 15, '2024-02-09');
+INSERT INTO public.orders VALUES (31, 3, 18, 2, 89, '2024-05-01');
+INSERT INTO public.orders VALUES (32, 5, 2, 2, 99, '2024-01-10');
+INSERT INTO public.orders VALUES (33, 6, 13, 2, 77, '2024-05-10');
+INSERT INTO public.orders VALUES (34, 5, 19, 3, 86, '2024-03-28');
+INSERT INTO public.orders VALUES (35, 1, 17, 1, 70, '2024-05-13');
+INSERT INTO public.orders VALUES (36, 9, 11, 3, 36, '2024-01-23');
+INSERT INTO public.orders VALUES (37, 3, 6, 2, 72, '2024-05-07');
+INSERT INTO public.orders VALUES (38, 7, 3, 3, 19, '2024-03-06');
+INSERT INTO public.orders VALUES (39, 10, 23, 1, 27, '2024-01-04');
+INSERT INTO public.orders VALUES (40, 3, 9, 1, 17, '2024-01-17');
+INSERT INTO public.orders VALUES (41, 7, 15, 1, 66, '2024-01-01');
+INSERT INTO public.orders VALUES (42, 2, 22, 3, 1, '2024-04-24');
+INSERT INTO public.orders VALUES (43, 5, 3, 2, 30, '2024-02-22');
+INSERT INTO public.orders VALUES (44, 5, 23, 1, 95, '2024-03-14');
+INSERT INTO public.orders VALUES (45, 7, 25, 3, 17, '2024-04-30');
+INSERT INTO public.orders VALUES (46, 8, 13, 2, 57, '2024-03-09');
+INSERT INTO public.orders VALUES (47, 1, 5, 1, 26, '2024-02-04');
+INSERT INTO public.orders VALUES (48, 5, 12, 1, 6, '2024-03-11');
+INSERT INTO public.orders VALUES (50, 10, 11, 3, 91, '2024-02-09');
+INSERT INTO public.orders VALUES (24, 1, 25, 3, 89, '2024-02-09');
+INSERT INTO public.orders VALUES (49, 10, 12, 1, 95, '2024-03-22');
 
 
 --
@@ -888,33 +882,31 @@ COPY public.orders (ido, id_customer, id_product, id_shipping, quantity, date) F
 -- Data for Name: products; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.products (idp, price, description) FROM stdin;
-1	67.58	Parsnip
-4	29.42	Ice Cream Bar - Hagen Daz
-5	7.79	Sea Bass - Fillets
-7	75.43	Chinese Foods - Thick Noodles
-8	9.16	Irish Cream - Baileys
-9	53.59	Bread Foccacia Whole
-14	6.03	Lemonade - Black Cherry, 591 Ml
-21	12.59	Fenngreek Seed
-22	96.43	Tomatoes - Orange
-24	69.07	Vodka - Moskovskaya
-20	14.94	Pimento - Canned
-16	84.30	Beans - Fine
-10	74.37	Sauce - Demi Glace
-3	25.78	Soup - Clam Chowder, Dry Mix
-18	35.78	Puree - Mocha
-2	38.46	Wine - Winzer Krems Gruner
-19	84.99	Tuna - Bluefin
-17	25.26	Food Colouring - Orange
-6	93.78	Ice Cream Bar - Drumstick
-15	20.65	Stock - Beef, Brown
-23	59.67	Straws - Cocktale
-13	52.72	Muffin Batt - Choc Chk
-11	92.60	Flour - Cake
-25	96.80	Salmon - Fillets
-12	16.34	Ginger - Fresh
-\.
+INSERT INTO public.products VALUES (1, 67.58, 'Parsnip');
+INSERT INTO public.products VALUES (4, 29.42, 'Ice Cream Bar - Hagen Daz');
+INSERT INTO public.products VALUES (5, 7.79, 'Sea Bass - Fillets');
+INSERT INTO public.products VALUES (7, 75.43, 'Chinese Foods - Thick Noodles');
+INSERT INTO public.products VALUES (8, 9.16, 'Irish Cream - Baileys');
+INSERT INTO public.products VALUES (9, 53.59, 'Bread Foccacia Whole');
+INSERT INTO public.products VALUES (14, 6.03, 'Lemonade - Black Cherry, 591 Ml');
+INSERT INTO public.products VALUES (21, 12.59, 'Fenngreek Seed');
+INSERT INTO public.products VALUES (22, 96.43, 'Tomatoes - Orange');
+INSERT INTO public.products VALUES (24, 69.07, 'Vodka - Moskovskaya');
+INSERT INTO public.products VALUES (20, 14.94, 'Pimento - Canned');
+INSERT INTO public.products VALUES (16, 84.30, 'Beans - Fine');
+INSERT INTO public.products VALUES (10, 74.37, 'Sauce - Demi Glace');
+INSERT INTO public.products VALUES (3, 25.78, 'Soup - Clam Chowder, Dry Mix');
+INSERT INTO public.products VALUES (18, 35.78, 'Puree - Mocha');
+INSERT INTO public.products VALUES (2, 38.46, 'Wine - Winzer Krems Gruner');
+INSERT INTO public.products VALUES (19, 84.99, 'Tuna - Bluefin');
+INSERT INTO public.products VALUES (17, 25.26, 'Food Colouring - Orange');
+INSERT INTO public.products VALUES (6, 93.78, 'Ice Cream Bar - Drumstick');
+INSERT INTO public.products VALUES (15, 20.65, 'Stock - Beef, Brown');
+INSERT INTO public.products VALUES (23, 59.67, 'Straws - Cocktale');
+INSERT INTO public.products VALUES (13, 52.72, 'Muffin Batt - Choc Chk');
+INSERT INTO public.products VALUES (11, 92.60, 'Flour - Cake');
+INSERT INTO public.products VALUES (25, 96.80, 'Salmon - Fillets');
+INSERT INTO public.products VALUES (12, 16.34, 'Ginger - Fresh');
 
 
 --
@@ -923,83 +915,81 @@ COPY public.products (idp, price, description) FROM stdin;
 -- Data for Name: products_optional_attributes; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.products_optional_attributes (idpoa, id_product, attr_name, relevance, value) FROM stdin;
-1	1	expiration	f	\N
-3	1	size	f	\N
-4	2	expiration	f	\N
-5	2	weight	f	\N
-6	2	size	f	\N
-7	3	expiration	f	\N
-8	3	weight	f	\N
-9	3	size	f	\N
-10	4	expiration	f	\N
-11	4	weight	f	\N
-12	4	size	f	\N
-13	5	expiration	f	\N
-14	5	weight	f	\N
-15	5	size	f	\N
-16	6	expiration	f	\N
-17	6	weight	f	\N
-18	6	size	f	\N
-19	7	expiration	f	\N
-20	7	weight	f	\N
-21	7	size	f	\N
-22	8	expiration	f	\N
-23	8	weight	f	\N
-24	8	size	f	\N
-25	9	expiration	f	\N
-26	9	weight	f	\N
-27	9	size	f	\N
-28	10	expiration	f	\N
-29	10	weight	f	\N
-30	10	size	f	\N
-31	11	expiration	f	\N
-32	11	weight	f	\N
-33	11	size	f	\N
-34	12	expiration	f	\N
-35	12	weight	f	\N
-36	12	size	f	\N
-37	13	expiration	f	\N
-38	13	weight	f	\N
-39	13	size	f	\N
-40	14	expiration	f	\N
-41	14	weight	f	\N
-42	14	size	f	\N
-43	15	expiration	f	\N
-44	15	weight	f	\N
-45	15	size	f	\N
-46	16	expiration	f	\N
-47	16	weight	f	\N
-48	16	size	f	\N
-49	17	expiration	f	\N
-50	17	weight	f	\N
-51	17	size	f	\N
-52	18	expiration	f	\N
-53	18	weight	f	\N
-54	18	size	f	\N
-55	19	expiration	f	\N
-56	19	weight	f	\N
-57	19	size	f	\N
-58	20	expiration	f	\N
-59	20	weight	f	\N
-60	20	size	f	\N
-61	21	expiration	f	\N
-62	21	weight	f	\N
-63	21	size	f	\N
-64	22	expiration	f	\N
-65	22	weight	f	\N
-66	22	size	f	\N
-67	23	expiration	f	\N
-68	23	weight	f	\N
-69	23	size	f	\N
-70	24	expiration	f	\N
-71	24	weight	f	\N
-72	24	size	f	\N
-73	25	expiration	f	\N
-74	25	weight	f	\N
-75	25	size	f	\N
-2	1	weight	f	\N
-\.
+INSERT INTO public.products_optional_attributes VALUES (1, 1, 'expiration', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (3, 1, 'size', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (4, 2, 'expiration', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (5, 2, 'weight', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (6, 2, 'size', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (7, 3, 'expiration', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (8, 3, 'weight', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (9, 3, 'size', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (10, 4, 'expiration', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (11, 4, 'weight', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (12, 4, 'size', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (13, 5, 'expiration', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (14, 5, 'weight', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (15, 5, 'size', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (16, 6, 'expiration', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (17, 6, 'weight', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (18, 6, 'size', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (19, 7, 'expiration', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (20, 7, 'weight', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (21, 7, 'size', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (22, 8, 'expiration', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (23, 8, 'weight', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (24, 8, 'size', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (25, 9, 'expiration', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (26, 9, 'weight', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (27, 9, 'size', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (28, 10, 'expiration', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (29, 10, 'weight', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (30, 10, 'size', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (31, 11, 'expiration', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (32, 11, 'weight', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (33, 11, 'size', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (34, 12, 'expiration', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (35, 12, 'weight', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (36, 12, 'size', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (37, 13, 'expiration', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (38, 13, 'weight', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (39, 13, 'size', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (40, 14, 'expiration', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (41, 14, 'weight', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (42, 14, 'size', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (43, 15, 'expiration', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (44, 15, 'weight', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (45, 15, 'size', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (46, 16, 'expiration', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (47, 16, 'weight', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (48, 16, 'size', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (49, 17, 'expiration', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (50, 17, 'weight', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (51, 17, 'size', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (52, 18, 'expiration', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (53, 18, 'weight', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (54, 18, 'size', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (55, 19, 'expiration', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (56, 19, 'weight', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (57, 19, 'size', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (58, 20, 'expiration', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (59, 20, 'weight', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (60, 20, 'size', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (61, 21, 'expiration', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (62, 21, 'weight', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (63, 21, 'size', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (64, 22, 'expiration', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (65, 22, 'weight', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (66, 22, 'size', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (67, 23, 'expiration', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (68, 23, 'weight', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (69, 23, 'size', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (70, 24, 'expiration', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (71, 24, 'weight', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (72, 24, 'size', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (73, 25, 'expiration', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (74, 25, 'weight', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (75, 25, 'size', false, NULL);
+INSERT INTO public.products_optional_attributes VALUES (2, 1, 'weight', false, NULL);
 
 
 --
@@ -1008,11 +998,9 @@ COPY public.products_optional_attributes (idpoa, id_product, attr_name, relevanc
 -- Data for Name: shipping_types; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.shipping_types (idst, price) FROM stdin;
-1	5.00
-2	10.00
-3	25.00
-\.
+INSERT INTO public.shipping_types VALUES (1, 5.00);
+INSERT INTO public.shipping_types VALUES (2, 10.00);
+INSERT INTO public.shipping_types VALUES (3, 25.00);
 
 
 --
@@ -1021,54 +1009,52 @@ COPY public.shipping_types (idst, price) FROM stdin;
 -- Data for Name: shippings_of_products; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.shippings_of_products (idsop, id_product, id_shipping) FROM stdin;
-1	1	2
-2	1	3
-3	2	2
-4	3	2
-5	3	3
-6	4	1
-7	4	2
-8	5	1
-9	6	2
-10	6	3
-11	7	1
-12	7	2
-13	7	3
-14	8	1
-15	8	2
-16	9	1
-17	9	2
-18	10	1
-19	10	2
-20	10	3
-21	11	1
-22	11	2
-23	11	3
-24	12	1
-25	13	2
-26	14	1
-27	14	2
-28	15	1
-29	16	3
-30	17	1
-31	17	2
-32	18	1
-33	18	2
-34	18	3
-35	19	2
-36	19	3
-37	20	1
-38	21	1
-39	21	2
-40	22	2
-41	22	3
-42	23	1
-43	23	2
-44	23	3
-45	24	2
-46	25	3
-\.
+INSERT INTO public.shippings_of_products VALUES (1, 1, 2);
+INSERT INTO public.shippings_of_products VALUES (2, 1, 3);
+INSERT INTO public.shippings_of_products VALUES (3, 2, 2);
+INSERT INTO public.shippings_of_products VALUES (4, 3, 2);
+INSERT INTO public.shippings_of_products VALUES (5, 3, 3);
+INSERT INTO public.shippings_of_products VALUES (6, 4, 1);
+INSERT INTO public.shippings_of_products VALUES (7, 4, 2);
+INSERT INTO public.shippings_of_products VALUES (8, 5, 1);
+INSERT INTO public.shippings_of_products VALUES (9, 6, 2);
+INSERT INTO public.shippings_of_products VALUES (10, 6, 3);
+INSERT INTO public.shippings_of_products VALUES (11, 7, 1);
+INSERT INTO public.shippings_of_products VALUES (12, 7, 2);
+INSERT INTO public.shippings_of_products VALUES (13, 7, 3);
+INSERT INTO public.shippings_of_products VALUES (14, 8, 1);
+INSERT INTO public.shippings_of_products VALUES (15, 8, 2);
+INSERT INTO public.shippings_of_products VALUES (16, 9, 1);
+INSERT INTO public.shippings_of_products VALUES (17, 9, 2);
+INSERT INTO public.shippings_of_products VALUES (18, 10, 1);
+INSERT INTO public.shippings_of_products VALUES (19, 10, 2);
+INSERT INTO public.shippings_of_products VALUES (20, 10, 3);
+INSERT INTO public.shippings_of_products VALUES (21, 11, 1);
+INSERT INTO public.shippings_of_products VALUES (22, 11, 2);
+INSERT INTO public.shippings_of_products VALUES (23, 11, 3);
+INSERT INTO public.shippings_of_products VALUES (24, 12, 1);
+INSERT INTO public.shippings_of_products VALUES (25, 13, 2);
+INSERT INTO public.shippings_of_products VALUES (26, 14, 1);
+INSERT INTO public.shippings_of_products VALUES (27, 14, 2);
+INSERT INTO public.shippings_of_products VALUES (28, 15, 1);
+INSERT INTO public.shippings_of_products VALUES (29, 16, 3);
+INSERT INTO public.shippings_of_products VALUES (30, 17, 1);
+INSERT INTO public.shippings_of_products VALUES (31, 17, 2);
+INSERT INTO public.shippings_of_products VALUES (32, 18, 1);
+INSERT INTO public.shippings_of_products VALUES (33, 18, 2);
+INSERT INTO public.shippings_of_products VALUES (34, 18, 3);
+INSERT INTO public.shippings_of_products VALUES (35, 19, 2);
+INSERT INTO public.shippings_of_products VALUES (36, 19, 3);
+INSERT INTO public.shippings_of_products VALUES (37, 20, 1);
+INSERT INTO public.shippings_of_products VALUES (38, 21, 1);
+INSERT INTO public.shippings_of_products VALUES (39, 21, 2);
+INSERT INTO public.shippings_of_products VALUES (40, 22, 2);
+INSERT INTO public.shippings_of_products VALUES (41, 22, 3);
+INSERT INTO public.shippings_of_products VALUES (42, 23, 1);
+INSERT INTO public.shippings_of_products VALUES (43, 23, 2);
+INSERT INTO public.shippings_of_products VALUES (44, 23, 3);
+INSERT INTO public.shippings_of_products VALUES (45, 24, 2);
+INSERT INTO public.shippings_of_products VALUES (46, 25, 3);
 
 
 --
@@ -1304,7 +1290,7 @@ ALTER TABLE ONLY public.shippings_of_products
     ADD CONSTRAINT shippings_of_products_id_shipping_fkey FOREIGN KEY (id_shipping) REFERENCES public.shipping_types(idst) NOT VALID;
 
 
--- Completed on 2024-06-05 14:18:16
+-- Completed on 2024-06-10 11:14:06
 
 --
 -- PostgreSQL database dump complete
