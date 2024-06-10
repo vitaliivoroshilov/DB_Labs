@@ -5,7 +5,7 @@
 -- Dumped from database version 16.3
 -- Dumped by pg_dump version 16.3
 
--- Started on 2024-06-07 01:24:32
+-- Started on 2024-06-10 11:16:01
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -313,26 +313,24 @@ ALTER TABLE public.twenty_five_twenty OWNER TO postgres;
 -- Data for Name: calls; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.calls (idc, idsub, date, dur) FROM stdin;
-699777001	1001	2018-01-01	20
-699777002	1004	2018-01-02	20
-699777003	1001	2018-01-02	30
-699777004	1001	2018-01-03	2
-699777005	1003	2018-01-03	10
-699777006	1001	2018-01-04	5
-699777007	1003	2018-01-04	11
-699777008	1003	2018-01-05	15
-699777009	1006	2018-01-05	10
-699777010	1006	2018-01-06	10
-699777011	1002	2018-01-07	10
-699777012	1000	2018-01-08	10
-699777013	1005	2018-01-08	3
-699777014	1000	2018-01-08	20
-699777015	1000	2018-01-08	1
-699777016	1000	2018-01-09	40
-699777017	1000	2018-01-10	50
-699777018	1007	2019-07-15	21
-\.
+INSERT INTO public.calls VALUES (699777001, 1001, '2018-01-01', 20);
+INSERT INTO public.calls VALUES (699777002, 1004, '2018-01-02', 20);
+INSERT INTO public.calls VALUES (699777003, 1001, '2018-01-02', 30);
+INSERT INTO public.calls VALUES (699777004, 1001, '2018-01-03', 2);
+INSERT INTO public.calls VALUES (699777005, 1003, '2018-01-03', 10);
+INSERT INTO public.calls VALUES (699777006, 1001, '2018-01-04', 5);
+INSERT INTO public.calls VALUES (699777007, 1003, '2018-01-04', 11);
+INSERT INTO public.calls VALUES (699777008, 1003, '2018-01-05', 15);
+INSERT INTO public.calls VALUES (699777009, 1006, '2018-01-05', 10);
+INSERT INTO public.calls VALUES (699777010, 1006, '2018-01-06', 10);
+INSERT INTO public.calls VALUES (699777011, 1002, '2018-01-07', 10);
+INSERT INTO public.calls VALUES (699777012, 1000, '2018-01-08', 10);
+INSERT INTO public.calls VALUES (699777013, 1005, '2018-01-08', 3);
+INSERT INTO public.calls VALUES (699777014, 1000, '2018-01-08', 20);
+INSERT INTO public.calls VALUES (699777015, 1000, '2018-01-08', 1);
+INSERT INTO public.calls VALUES (699777016, 1000, '2018-01-09', 40);
+INSERT INTO public.calls VALUES (699777017, 1000, '2018-01-10', 50);
+INSERT INTO public.calls VALUES (699777018, 1007, '2019-07-15', 21);
 
 
 --
@@ -341,16 +339,14 @@ COPY public.calls (idc, idsub, date, dur) FROM stdin;
 -- Data for Name: subscribers; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.subscribers (ids, fn, ln, idtar) FROM stdin;
-1000	Bruce	Willis	1
-1001	Gary	Oldman	1
-1002	Ian	Holm	2
-1003	Milla	Jovovich	2
-1004	Chris	Tucker	2
-1005	Luke	Perry	3
-1006	Brion	James	3
-1007	Lee	Evans	3
-\.
+INSERT INTO public.subscribers VALUES (1000, 'Bruce', 'Willis', 1);
+INSERT INTO public.subscribers VALUES (1001, 'Gary', 'Oldman', 1);
+INSERT INTO public.subscribers VALUES (1002, 'Ian', 'Holm', 2);
+INSERT INTO public.subscribers VALUES (1003, 'Milla', 'Jovovich', 2);
+INSERT INTO public.subscribers VALUES (1004, 'Chris', 'Tucker', 2);
+INSERT INTO public.subscribers VALUES (1005, 'Luke', 'Perry', 3);
+INSERT INTO public.subscribers VALUES (1006, 'Brion', 'James', 3);
+INSERT INTO public.subscribers VALUES (1007, 'Lee', 'Evans', 3);
 
 
 --
@@ -359,16 +355,14 @@ COPY public.subscribers (ids, fn, ln, idtar) FROM stdin;
 -- Data for Name: sum_fees; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.sum_fees (idsub, fee) FROM stdin;
-1000	400.00
-1001	400.00
-1002	200.00
-1003	200.00
-1004	200.00
-1005	15.00
-1006	100.00
-1007	105.00
-\.
+INSERT INTO public.sum_fees VALUES (1000, 400.00);
+INSERT INTO public.sum_fees VALUES (1001, 400.00);
+INSERT INTO public.sum_fees VALUES (1002, 200.00);
+INSERT INTO public.sum_fees VALUES (1003, 200.00);
+INSERT INTO public.sum_fees VALUES (1004, 200.00);
+INSERT INTO public.sum_fees VALUES (1005, 15.00);
+INSERT INTO public.sum_fees VALUES (1006, 100.00);
+INSERT INTO public.sum_fees VALUES (1007, 105.00);
 
 
 --
@@ -377,11 +371,9 @@ COPY public.sum_fees (idsub, fee) FROM stdin;
 -- Data for Name: tariffs; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.tariffs (idt, name, monthfee, monthmins, minutefee) FROM stdin;
-1	Max	400.00	300.00	1.00
-2	Average	200.00	150.00	3.00
-3	Mini	0.00	0.00	5.00
-\.
+INSERT INTO public.tariffs VALUES (1, 'Max', 400.00, 300.00, 1.00);
+INSERT INTO public.tariffs VALUES (2, 'Average', 200.00, 150.00, 3.00);
+INSERT INTO public.tariffs VALUES (3, 'Mini', 0.00, 0.00, 5.00);
 
 
 --
@@ -390,9 +382,7 @@ COPY public.tariffs (idt, name, monthfee, monthmins, minutefee) FROM stdin;
 -- Data for Name: twenty_five_twenty; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.twenty_five_twenty (idcall) FROM stdin;
-699777015
-\.
+INSERT INTO public.twenty_five_twenty VALUES (699777015);
 
 
 --
@@ -522,7 +512,7 @@ ALTER TABLE ONLY public.twenty_five_twenty
     ADD CONSTRAINT twenty_five_twenty_idcall_fkey FOREIGN KEY (idcall) REFERENCES public.calls(idc);
 
 
--- Completed on 2024-06-07 01:24:32
+-- Completed on 2024-06-10 11:16:02
 
 --
 -- PostgreSQL database dump complete
